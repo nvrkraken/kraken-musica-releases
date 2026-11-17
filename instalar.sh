@@ -75,7 +75,8 @@ if [ -n "$FALTA" ]; then
     CMD="pacman -S --needed mpv ffmpeg python yt-dlp python-ytmusicapi python-mutagen libnotify curl libpulse cava"
     dicho "Se instalarán con: sudo $CMD"
     dicho "(te va a pedir tu contraseña)"
-    $SUDO $CMD || falla "No se pudieron instalar. Revisa el mensaje de arriba."
+    # con "curl | sh" la entrada es el propio script: pacman tiene que preguntar al teclado
+    $SUDO $CMD < /dev/tty || falla "No se pudieron instalar. Revisa el mensaje de arriba."
 fi
 
 # ── 3. la app ──
