@@ -93,4 +93,4 @@ echo "  · Ábrela desde el menú de aplicaciones (Kraken Música) o con: $BIN/k
 echo "  · Queda en la bandeja del sistema y arranca sola al iniciar sesión."
 echo "  · Se actualiza sola: cuando haya versión nueva aparece una flecha arriba en el reproductor."
 case ":$PATH:" in *":$BIN:"*) ;; *) echo "  · Para usarla desde la terminal, agrega $BIN a tu PATH." ;; esac
-nohup "$BIN/kraken-musica" --abrir >/dev/null 2>&1 &
+[ -n "${KRAKEN_SIN_ABRIR:-}" ] || nohup "$BIN/kraken-musica" --abrir >/dev/null 2>&1 &
